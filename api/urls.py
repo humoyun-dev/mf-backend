@@ -7,6 +7,8 @@ from orders.api import (
 
 from sellers.api import SellersListAPIView, SellerDetailAPIView
 
+from .api import TotalIncomeAPIView
+
 from loan.api import (
     LoansListAPIView,
     LoanDetailAPIView,
@@ -15,6 +17,8 @@ from loan.api import (
 urlpatterns = [
     # product
     path('products/', include("product.urls")),
+
+    path('statistics/', TotalIncomeAPIView.as_view()),
 
     # orders
     path("orders/", OrderAPIView.as_view(), name="order-list"),

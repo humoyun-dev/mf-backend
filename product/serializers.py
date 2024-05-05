@@ -3,9 +3,16 @@ from rest_framework import serializers
 from .models import Product, ProductImage, Proporties, Category
 
 class CategorySerializer(serializers.ModelSerializer):
+    product = serializers.SerializerMethodField()
+
+    def get_product(self, obj):
+        products = Product.objects.filter(category=obj.id)
+        serializer = ProductSerializer(products, many=True)
+        return serializer.data
+
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['id', 'name', 'product']
 
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:

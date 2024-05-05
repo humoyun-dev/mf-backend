@@ -24,8 +24,7 @@ class ProductOrder(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.SmallIntegerField()
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="products", null=True)
-    # rasimlaga o'xshagan xoxlagancha qo'shish imkonini beruvchi narsa qilish kere
-    # ok
+
 
 
     def __str__(self):
